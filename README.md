@@ -39,14 +39,14 @@ npm run dev                      # http://localhost:3000
 |---|---|---|
 | `NEXT_PUBLIC_SUPABASE_URL` | URL del proyecto | pública |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | clave publicable | pública |
-| `NEXT_PUBLIC_SITE_URL` | base de los enlaces de acceso | por entorno |
 | `SUPABASE_SERVICE_ROLE_KEY` | bootstrap de rol admin por email | **secreta**, opcional |
 | `ADMIN_PENTADATA_EMAILS` / `ADMIN_INGENIO21_EMAILS` | quién es admin | config |
 
 ## Despliegue en Vercel
 1. Sube este código a un repo de GitHub e impórtalo en Vercel (framework: Next.js).
-2. En **Settings → Environment Variables** pega las variables de arriba
-   (pon `NEXT_PUBLIC_SITE_URL` con tu dominio `https://TU-APP.vercel.app`).
+2. En **Settings → Environment Variables** pega las variables públicas de Supabase
+   (`NEXT_PUBLIC_SUPABASE_URL` y `NEXT_PUBLIC_SUPABASE_ANON_KEY`) y los emails admin.
+   La app detecta su propio dominio en tiempo de ejecución, no necesita `SITE_URL`.
 3. **Importante (Supabase → Authentication → URL Configuration):** añade tu dominio de
    Vercel en *Site URL* y en *Redirect URLs* (`https://TU-APP.vercel.app/auth/callback`).
    Sin esto, los enlaces de acceso no validan en producción.
